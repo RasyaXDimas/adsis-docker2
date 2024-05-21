@@ -1,116 +1,40 @@
-import React from 'react'
-import Persona from '../Component/Persona'
-import foto from "../assets/persona.png"
-import ref from "../assets/foto.jpg";
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import Persona from "../Component/Persona";
+import foto from "../assets/satu.png";
 
 const LandingPage = () => {
-	const [roles,setRole] = useState([]);
-  useEffect(()=>{
-   const fetchData = async () => {
-    const res = await fetch ('http://localhost:8000')
-    const data = await res.json()
-    console.log(data)
-    setRole(data)
-   }
-   fetchData();
-  },[])
+	const [personas, setPersona] = useState([]);
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const res = await fetch("http://localhost:8000");
+				const data = await res.json();
+				console.log(data);
+				setPersona(data);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetchData();
+	}, []);
 	return (
 		<>
-		 {
-                roles.map((role, i) => (
-                    <h2 key={i}>{role.nama}</h2>
-                ))
-            }
-			{/* <div className="">
-				<h2 className="text-center text-3xl font-bold mt-14">Our Teams</h2>
+			{personas.map((persona, index) => (
 				<Persona
-					foto={ref}
-					nama="Lenatheaa"
-					role="Front End"
-					quote="Jika terlalu menjaga image, hidupmu hanya sebatas jpeg"
-					ability={["Cantik", "Baik", "Pintar"]}
-					goals={["Jadi Dokter"]}
-					hobi={["Membaca buku", "Mendengarkan musik", "Belajar"]}
-					skill={["Bermain gitar", "Bermain drum", "Bermain Klarinet"]}
+					key={index}
+					nama={persona.nama}
+					goals={persona.goals}
+					role={persona.role}
+					hobi={persona.hobi}
+					foto="localhost:8000/assets/satu.png"
+					quote={persona.quote}
+					skill={persona.bakat}
+					ability={persona.kelebihan}
+					invers={index % 2 === 0}
 				/>
-				<Persona
-					foto={ref}
-					nama="Lenatheaa"
-					role="Front End"
-					quote="Jika terlalu menjaga image, hidupmu hanya sebatas jpeg"
-					ability={["Cantik", "Baik", "Pintar"]}
-					invers={true}
-					goals={["Jadi Dokter"]}
-					hobi={["Membaca buku", "Mendengarkan musik", "Belajar"]}
-					skill={["Bermain gitar", "Bermain drum", "Bermain Klarinet"]}
-				/>
-				<Persona
-					foto={ref}
-					nama="Lenatheaa"
-					role="Front End"
-					quote="Jika terlalu menjaga image, hidupmu hanya sebatas jpeg"
-					ability={["Cantik", "Baik", "Pintar"]}
-					goals={["Jadi Dokter"]}
-					hobi={["Membaca buku", "Mendengarkan musik", "Belajar"]}
-					skill={["Bermain gitar", "Bermain drum", "Bermain Klarinet"]}
-				/>
-				<Persona
-					foto={ref}
-					nama="Lenatheaa"
-					role="Front End"
-					quote="Jika terlalu menjaga image, hidupmu hanya sebatas jpeg"
-					ability={["Cantik", "Baik", "Pintar"]}
-					invers={true}
-					goals={["Jadi Dokter"]}
-					hobi={["Membaca buku", "Mendengarkan musik", "Belajar"]}
-					skill={["Bermain gitar", "Bermain drum", "Bermain Klarinet"]}
-				/>
-				<Persona
-					foto={ref}
-					nama="Lenatheaa"
-					role="Front End"
-					quote="Jika terlalu menjaga image, hidupmu hanya sebatas jpeg"
-					ability={["Cantik", "Baik", "Pintar"]}
-					goals={["Jadi Dokter"]}
-					hobi={["Membaca buku", "Mendengarkan musik", "Belajar"]}
-					skill={["Bermain gitar", "Bermain drum", "Bermain Klarinet"]}
-				/>
-				<Persona
-					foto={ref}
-					nama="Lenatheaa"
-					role="Front End"
-					quote="Jika terlalu menjaga image, hidupmu hanya sebatas jpeg"
-					ability={["Cantik", "Baik", "Pintar"]}
-					invers={true}
-					goals={["Jadi Dokter"]}
-					hobi={["Membaca buku", "Mendengarkan musik", "Belajar"]}
-					skill={["Bermain gitar", "Bermain drum", "Bermain Klarinet"]}
-				/>
-				<Persona
-					foto={ref}
-					nama="Lenatheaa"
-					role="Front End"
-					quote="Jika terlalu menjaga image, hidupmu hanya sebatas jpeg"
-					ability={["Cantik", "Baik", "Pintar"]}
-					goals={["Jadi Dokter"]}
-					hobi={["Membaca buku", "Mendengarkan musik", "Belajar"]}
-					skill={["Bermain gitar", "Bermain drum", "Bermain Klarinet"]}
-				/>
-				<Persona
-					foto={ref}
-					nama="Lenatheaa"
-					role="Front End"
-					quote="Jika terlalu menjaga image, hidupmu hanya sebatas jpeg"
-					ability={["Cantik", "Baik", "Pintar"]}
-					invers={true}
-					goals={["Jadi Dokter"]}
-					hobi={["Membaca buku", "Mendengarkan musik", "Belajar"]}
-					skill={["Bermain gitar", "Bermain drum", "Bermain Klarinet"]}
-				/>
-			</div> */}
+			))}
 		</>
 	);
 };
 
-export default LandingPage
+export default LandingPage;
