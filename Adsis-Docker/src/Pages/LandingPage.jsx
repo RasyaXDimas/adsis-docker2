@@ -26,7 +26,7 @@ const LandingPage = () => {
 					goals={persona.goals}
 					role={persona.role}
 					hobi={persona.hobi}
-					foto="localhost:8000/assets/satu.png"
+					foto={`http://localhost:8000/assets/${persona.foto}`}
 					quote={persona.quote}
 					skill={persona.bakat}
 					ability={persona.kelebihan}
