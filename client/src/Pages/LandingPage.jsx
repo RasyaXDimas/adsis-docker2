@@ -19,20 +19,23 @@ const LandingPage = () => {
 	}, []);
 	return (
 		<>
-			{personas.map((persona, index) => (
-				<Persona
-					key={index}
-					nama={persona.nama}
-					goals={persona.goals}
-					role={persona.role}
-					hobi={persona.hobi}
-					foto={`http://localhost:8000/assets/${persona.foto}`}
-					quote={persona.quote}
-					skill={persona.bakat}
-					ability={persona.kelebihan}
-					invers={index % 2 === 0}
-				/>
-			))}
+			<section className="bg-[#FFEBB2] py-[5%]">
+				<h1 className="text-6xl text-center font-bold">Our Tems</h1>
+				{personas.map((persona, index) => (
+					<Persona
+						key={index}
+						nama={persona.nama}
+						goals={persona.goals}
+						role={persona.role}
+						hobi={persona.hobi}
+						foto={`http://localhost:8000/assets/${persona.foto}`}
+						quote={persona.quote}
+						skill={persona.bakat}
+						ability={persona.kelebihan}
+						invers={index % 2 === 0}
+					/>
+				))}
+			</section>
 		</>
 	);
 };
