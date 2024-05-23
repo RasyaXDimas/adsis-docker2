@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Persona from "../Component/Persona";
-import foto from "../assets/satu.png";
 
 const LandingPage = () => {
 	const [personas, setPersona] = useState([]);
@@ -20,7 +19,9 @@ const LandingPage = () => {
 	return (
 		<>
 			<section className="bg-[#FFEBB2] py-[5%]">
-				<h1 className="text-6xl text-center font-bold">Our Tems</h1>
+				<h1 className="text-6xl text-center font-bold">
+					Our Teams (Kelompok A)
+				</h1>
 				{personas.map((persona, index) => (
 					<Persona
 						key={index}
